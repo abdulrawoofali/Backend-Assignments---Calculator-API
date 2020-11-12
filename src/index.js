@@ -15,7 +15,7 @@ const findResult =(num1,num2,op)=>{
         }
     }
 
-    if(isNaN(num1)||isNaN(num1)){
+    if(isNaN(num1)||isNaN(num2)){
         console.log("sent string....");
         return {
             
@@ -88,38 +88,57 @@ app.get("/welcome",(req,res)=>{
 
 app.post("/add/:num1/:num2",(req,res)=>{
     console.log("post calling....");
-    const num1 =parseInt(req.params.num1);
-    const num2 = parseInt(req.params.num2);
+    const num1 =parseFloat(req.params.num1);
+    const num2 = parseFloat(req.params.num2);
     
-    
-    res.status(200).json(findResult(num1,num2,'+'));
+    const resObj = findResult(num1,num2,'+');
+    let satuts = 200;
+    if(resObj.status==="error"){
+        status = "400";
+    }
+    res.status(satuts).json(resObj);
     
 });
 
 app.post("/sub/:num1/:num2",(req,res)=>{
     console.log("sub calling....");
-    const num1 =parseInt(req.params.num1);
-    const num2 = parseInt(req.params.num2);
+    const num1 =parseFloat(req.params.num1);
+    const num2 = parseFloat(req.params.num2);
     
     
-    res.status(200).json(findResult(num1,num2,'-'));
+    const resObj = findResult(num1,num2,'+');
+    let satuts = 200;
+    if(resObj.status==="error"){
+        status = "400";
+    }
+    res.status(satuts).json(resObj);
     
 });
 app.post("/multiply/:num1/:num2",(req,res)=>{
-    const num1 =parseInt(req.params.num1);
-    const num2 = parseInt(req.params.num2);
+    const num1 =parseFloat(req.params.num1);
+    const num2 = parseFloat(req.params.num2);
     
     
-    res.status(200).json(findResult(num1,num2,'*'));
+    const resObj = findResult(num1,num2,'+');
+    let satuts = 200;
+    if(resObj.status==="error"){
+        status = "400";
+    }
+    res.status(satuts).json(resObj);
     
     
 });
 app.post("/division/:num1/:num2",(req,res)=>{
-    const num1 =parseInt(req.params.num1);
-    const num2 = parseInt(req.params.num2);
+    const num1 =parseFloat(req.params.num1);
+    const num2 = parseFloat(req.params.num2);
     
     
-    res.status(200).json(findResult(num1,num2,'/'));
+    const resObj = findResult(num1,num2,'+');
+    let satuts = 200;
+    if(resObj.status==="error"){
+        status = "400";
+    }
+    res.status(satuts).json(resObj);
     
     
 });
