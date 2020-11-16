@@ -16,7 +16,6 @@ app.get('/',(req,res) => {
     res.send("Hello world!");
 });
 
-// add route
 app.post("/add", (req,res) => {
     let num1 = req.body.num1;
     let num2 = req.body.num2;
