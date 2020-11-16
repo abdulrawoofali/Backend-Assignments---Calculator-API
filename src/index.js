@@ -19,6 +19,14 @@ app.get('/',(req,res) => {
 app.post("/add", (req,res) => {
     let num1 = req.body.num1;
     let num2 = req.body.num2;
+    if(isNaN(parseFloat(num1)) || isNaN(parseFloat(num1))){
+        res.send({
+            status: "failure",
+            message: "Invalid data types",
+            sum: undefined
+        });
+        return;
+    }
     if(parseFloat(num1) > 1000000 || parseFloat(num2) > 1000000){
         res.send({
             status: "Error",
@@ -50,12 +58,6 @@ app.post("/add", (req,res) => {
                 sum: undefined
             });
         }
-    }else if(isNaN(parseFloat(num1)) || isNaN(parseFloat(num1))){
-        res.send({
-            status: "failure",
-            message: "Invalid data types",
-            sum: undefined
-        });
     }
 });
 
@@ -142,6 +144,14 @@ app.post("/multiply", (req,res) => {
 app.post("/divide", (req,res) => {
     let num1 = req.body.num1;
     let num2 = req.body.num2;
+    if(isNaN(parseFloat(num1)) || isNaN(parseFloat(num1))){
+        res.send({
+            status: "failure",
+            message: "Invalid data types",
+            result: undefined
+        });
+        return;
+    }
     if(parseFloat(num1) > 1000000 || parseFloat(num2) > 1000000){
         res.send({
             status: "Error",
@@ -171,12 +181,6 @@ app.post("/divide", (req,res) => {
             status: "success",
             message: "The division of given numbers",
             result: parseFloat(num1) / parseFloat(num2)
-        });
-    }else if(isNaN(parseFloat(num1)) || isNaN(parseFloat(num1))){
-        res.send({
-            status: "failure",
-            message: "Invalid data types",
-            result: undefined
         });
     }
 });
